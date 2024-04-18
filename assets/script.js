@@ -17,18 +17,55 @@ const slides = [
 	}
 ]
 
+let index = 0; 
 
-console.log ()
+const bannerSlides = document.querySelector(".banner-img");
+const bannerText = document.querySelector("#banner p");
+let dots = document.querySelectorAll(".dot");
+
+
+// Flèches 
 const left = document.querySelector(".arrow_left");
-console.log(left); 
+const right = document.querySelector(".arrow_right");
+
+
+// Création des events listeners des flèches
+ // Ajout de la fonction de défilement : étape 4
+
 left.addEventListener("click", moveLeft);
 function moveLeft () {
 	console.log("Vous avez cliqué sur la flèche gauche");
+	showSlide();
+	if (index <= 0) {
+		index = slides.length -1;
+	} 
+	else {
+		index --;
+	}
 }
 
-const right = document.querySelector(".arrow_right");
-console.log(right);
 right.addEventListener("click", moveRight);
 function moveRight () {
-	console.log("Vous avez cliqué sur la flèche drorite");
+	console.log("Vous avez cliqué sur la flèche droite");
+	showSlide ();
+	if (index >= slides.length - 1) {
+		index = 0;
+	} 
+	else {
+		index ++;
+	}
+}
+
+//Ajout des images et du text
+function showSlide() {
+	bannerSlides.src = `./assets/images/slideshow/${slides[index].image}`;
+	bannerText.innerHTML = slides[index].tagLine;
+
+for (var i = 0; i < dots.length; i++) {
+	if (i === index) {
+	  dots[i].classList.add('dot_selected');
+	} else {
+	  dots[i].classList.remove('dot_selected');
+	}
+  }
 }
