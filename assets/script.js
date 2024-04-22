@@ -34,26 +34,26 @@ const right = document.querySelector(".arrow_right");
 
 left.addEventListener("click", moveLeft);
 function moveLeft () {
-	console.log("Vous avez cliqué sur la flèche gauche");
-	showSlide();
+	console.log("Vous avez cliqué sur la flèche gauche");	
 	if (index <= 0) {
 		index = slides.length -1;
 	} 
 	else {
 		index --;
 	}
+	showSlide();
 }
 
 right.addEventListener("click", moveRight);
 function moveRight () {
 	console.log("Vous avez cliqué sur la flèche droite");
-	showSlide ();
 	if (index >= slides.length - 1) {
 		index = 0;
 	} 
 	else {
 		index ++;
 	}
+	showSlide ();
 }
 
 //Ajout des images et du text
@@ -61,11 +61,11 @@ function showSlide() {
 	bannerSlides.src = `./assets/images/slideshow/${slides[index].image}`;
 	bannerText.innerHTML = slides[index].tagLine;
 
-for (var i = 0; i < dots.length; i++) {
-	if (i === index) {
-	  dots[i].classList.add('dot_selected');
-	} else {
-	  dots[i].classList.remove('dot_selected');
+	for (var i = 0; i < dots.length; i++) {
+		if (i === index) {
+			dots[i].classList.add('dot_selected');
+		} else {
+			dots[i].classList.remove('dot_selected');
+		}
 	}
-  }
 }
